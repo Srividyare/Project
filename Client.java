@@ -4,10 +4,10 @@ import java.io.*;
 
 public class Client
 {
-   public static void main(String [] args)
+   public static void main()
    {
       String serverName = "localhost";
-      int port = Integer.parseInt(args[0]);
+     // int port = Integer.parseInt(args[0]);
       try
       {
         
@@ -24,12 +24,12 @@ public class Client
                         new DataInputStream(inFromServer);
          Scanner s = new Scanner(System.in);
          while(true) {
-           if (port == 9997) {
-           System.out.println("Please enter one of the following to get started Encrypt/Decrypt, close");
-           } 
-           if (port == 9998) {
-             System.out.println("Please enter one of the following to get started FortuneCookie, close");
-           }
+          // if (port == 9997) {
+           System.out.println("Please enter 'Fortune Cookie' for Fortune Cookie Server or enter 'encrypt' or 'decrypt' EncryptDcrypt Server");
+           //} 
+          // if (port == 9998) {
+           //  System.out.println("Please enter one of the following to get started FortuneCookie, close");
+           //}
          String input = s.nextLine();
          if (input.equals("close")) {
            client.close();

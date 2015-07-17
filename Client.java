@@ -1,18 +1,3 @@
-srividya
- 
- 
-More
- 
-1 of 1,173
- 
-(no subject)
-Inbox
-	x
-Siddartha Guthikonda
-	
-10:31 PM (0 minutes ago)
-		
-to me
 import java.net.*;
 import java.util.Scanner;
 import java.io.*;

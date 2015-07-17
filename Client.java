@@ -14,7 +14,7 @@ public class Client
         
          System.out.println("Connecting to " + serverName
                              + " on port " + port);
-         Socket client = new Socket(serverName, port);
+         Socket client = new Socket(serverName);
          System.out.println("Just connected to "
                       + client.getRemoteSocketAddress());
          OutputStream outToServer = client.getOutputStream();

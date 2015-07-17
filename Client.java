@@ -8,6 +8,7 @@ public class Client
    {
       String serverName = "localhost";
      // int port = Integer.parseInt(args[0]);
+     int port=9998;
       try
       {
         

@@ -4,7 +4,7 @@ import java.io.*;
 
 public class Client
 {
-   public static void main()
+   public static void main(String[] args)
    {
       String serverName = "localhost";
      // int port = Integer.parseInt(args[0]);

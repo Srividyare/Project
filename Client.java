@@ -58,6 +58,7 @@ public class Client
         if (input.equalsIgnoreCase("close")) {
           if (client != null) {
             client.close();
+            System.exit(0);	
           }
         }
       } 

@@ -15,9 +15,10 @@ public class Client
 
       Scanner s = new Scanner(System.in);
       while(true) {
-        System.out.println("Please enter 'Fortune Cookie' for Fortune Cookie Server or enter 'encrypt' or 'decrypt' EncryptDcrypt Server");
+        System.out.println("Please enter 'Fortune Cookie' for Fortune Cookie Server or "
+            + "enter 'encrypt' or 'decrypt' EncryptDcrypt Server or close");
         String input = s.nextLine();
-
+        // Processes Fortune Cookie logic
         if (input.equalsIgnoreCase("Fortune Cookie")) {
           System.out.println("Connecting to " + serverName
               + " on port " + 9998);
@@ -33,33 +34,52 @@ public class Client
           System.out.println("Please enter the number of cookie you want");
           String inputToServer = s.nextLine();
 
-
-
+          if (inputToServer.equalsIgnoreCase("close")) {
+            client.close();
+            System.exit(0);
+          } else {
+         
           out.writeUTF(inputToServer);
 
           System.out.println(":" + in.readUTF());
+          client.close();
+          }
         }
+        
+        // Processes Encrypt Decrypt logic
         if (input.equalsIgnoreCase("encrypt") || input.equalsIgnoreCase("decrypt")) {
+
           System.out.println("Connecting to " + serverName
               + " on port " + 9997);
           client = new Socket(serverName, 9997);
           System.out.println("Just connected to "
               + client.getRemoteSocketAddress());
+          System.out.println("Enter your string that needs to be encrypted/ decrypted. \n"
+              + "For encryption prefix your string with e \n"
+              + "For decryption prefix your string with d");
           OutputStream outToServer = client.getOutputStream();
           DataOutputStream out =
               new DataOutputStream(outToServer);
           InputStream inFromServer = client.getInputStream();
           DataInputStream in =
               new DataInputStream(inFromServer);
-          String inputToServer = s.nextLine();
-          out.writeUTF(inputToServer);
-          System.out.println(":" + in.readUTF());
-        } 
+          while (true) {
+            String inputToServer = s.nextLine();
+            if (inputToServer.equalsIgnoreCase("close")) {
+              client.close();
+              System.exit(0);
+            } else {
+              out.writeUTF(inputToServer);
+              System.out.println(":" + in.readUTF());
+            }
+          } 
+        }
         if (input.equalsIgnoreCase("close")) {
           if (client != null) {
             client.close();
-            System.exit(0);	
+            System.exit(0);
           }
+          System.exit(0);
         }
       } 
 

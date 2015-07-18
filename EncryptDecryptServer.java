@@ -42,6 +42,8 @@ public class EncryptDecryptServer extends Thread
     */
    public void waitForConnections(ServerSocket serverSocket) throws IOException {
      Socket server = new Socket();
+     System.out.println("Waiting for client on port " +
+serverSocket.getLocalPort() + "...");
      server = serverSocket.accept();
      socks.add(server);
      // if we have less than 20 in our used thread poll then we can server

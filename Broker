@@ -1,0 +1,78 @@
+import java.net.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Random;
+import java.io.*;
+
+public class Broker extends Thread
+{
+  private ServerSocket serverSocket;
+ 
+  public Broker(int port) throws IOException
+  {
+    serverSocket = new ServerSocket(port);
+   
+  }
+
+  public void run()
+  { 
+    while(true)
+    { 
+      Socket server = null;
+      try
+      {
+        System.out.println("Waiting for client on port " +
+            serverSocket.getLocalPort() + "...");
+        server = serverSocket.accept();
+        System.out.println("Just connected to "
+            + server.getRemoteSocketAddress());
+        DataInputStream in = null ;
+        DataOutputStream out = null ;
+
+        if (in == null) { // create new input stream if not exists
+          in = new DataInputStream(server.getInputStream());                 
+        }
+        if (out == null) { // create new output stream if not exists
+          out = new DataOutputStream(server.getOutputStream());
+        }
+        String input = in.readUTF();
+        if(input.equals("1"){
+        System.out.println("Got request to connect to Fortune Cookie Server");
+        String output = ipaddr_1;
+        }
+        if(input.equals("2"){
+        System.out.println("Got request to connect to Encrypt/Decrypt Server");
+        String output = ipaddr_2;
+        }
+        
+        }}
+    catch(SocketTimeoutException s)
+    {
+      System.out.println("Socket timed out!");
+    }catch(IOException e)
+    {
+      if (server != null) {
+      System.out.println("Client Connection closed" +server.getRemoteSocketAddress());
+      }
+      // e.printStackTrace();
+    }}
+  }
+
+  
+
+
+  public static void main(String [] args)
+  {
+
+    try
+    { 
+      
+      Thread t = new Broker(9998);
+      t.start();
+    }catch(IOException e)
+    {
+      e.printStackTrace();
+    }
+  }
+}
